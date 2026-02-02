@@ -1,170 +1,122 @@
-📊 Sampling Techniques on Imbalanced Credit Card Dataset
+Sampling Techniques on an Imbalanced Credit Card Fraud Dataset
 
-📌 Objective
+Objective
 
-The objective of this assignment is to understand the importance of sampling techniques in handling imbalanced datasets and to analyze how different sampling strategies affect the performance of multiple machine learning models in credit card fraud detection.
+The goal of this assignment is to understand how different sampling techniques help when working with imbalanced datasets. In this case, we focus on credit card fraud detection and study how sampling methods affect the performance of various machine learning models.
 
-⸻
+Fraud detection is challenging because fraudulent transactions are very rare compared to legitimate ones. This imbalance can cause models to perform poorly if not handled properly.
 
-📂 Dataset
-	•	Dataset Name: Creditcard_data.csv
-	•	Source:
-https://github.com/AnjulaMehto/Sampling_Assignment/blob/main/Creditcard_data.csv
-	•	Target Variable: Class
-	•	0 → Legitimate Transaction
-	•	1 → Fraudulent Transaction
 
-The dataset is highly imbalanced, with fraudulent transactions being extremely rare.
+Dataset
+	•	Dataset: Creditcard_data.csv
+	•	Target variable: Class
+	•	0 → Legitimate transaction
+	•	1 → Fraudulent transaction
 
-⸻
+The dataset is highly imbalanced, with only a small fraction of transactions labeled as fraud.
 
-⚙️ Methodology
+Methodology
 
-1️⃣ Data Preparation
+1. Data Preparation
 	•	The dataset was split into:
 	•	Features (X): All columns except Class
 	•	Target (y): Class
-	•	A stratified 70:30 train–test split was used to preserve class distribution.
-	•	Sampling techniques were applied only on the training data to prevent data leakage.
+	•	A stratified 70:30 train–test split was used to maintain the original class distribution.
+	•	Sampling techniques were applied only on the training set to avoid data leakage.
 
-⸻
+2. Sampling Techniques
 
-2️⃣ Sampling Techniques Applied
-
-Five sampling strategies were evaluated:
+Five sampling strategies were tested:
 
 Sampling ID	Technique
-Sampling1	NoSampling
-Sampling2	RandomOverSampler
-Sampling3	RandomUnderSampler
+Sampling1	No Sampling
+Sampling2	Random Over Sampler
+Sampling3	Random Under Sampler
 Sampling4	SMOTE
-Sampling5	SMOTETomek
+Sampling5	SMOTE + Tomek Links
 
 
-⸻
+3. Machine Learning Models
 
-3️⃣ Machine Learning Models
-
-Five classifiers were trained with each sampling technique:
+Each sampling method was used with the following classifiers:
 
 Model ID	Classifier
 M1	Logistic Regression
 M2	Decision Tree
 M3	Random Forest
 M4	Naive Bayes
-M5	Support Vector Machine (SVM)
+M5	Support Vector Machine
 
 
-⸻
+4. Evaluation Metrics
 
-4️⃣ Evaluation Metrics
-
-Each model was evaluated on unseen test data using:
+Models were evaluated on the unseen test data using:
 	•	Accuracy
 	•	Precision
 	•	Recall
 	•	F1-Score
 	•	ROC-AUC
 
-⚠️ Since fraud detection is a cost-sensitive problem, Recall was treated as the most important metric.
+Since fraud detection is a cost-sensitive problem, recall was treated as the most important metric. Missing a fraud case is usually more serious than incorrectly flagging a legitimate transaction.
 
-⸻
+Results and Analysis
 
-📊 Results & Graphical Analysis
+Accuracy
 
-⸻
+Accuracy was above 97% for most models, even without sampling. However, this is misleading because the dataset is dominated by legitimate transactions. A model can predict almost everything as legitimate and still achieve high accuracy.
 
-🔹 Accuracy Heatmap
+Recall
 
-Accuracy values appear very high for most models, even without sampling.
+Recall measures how many actual fraud cases were correctly identified.
+	•	Without sampling, most models had very low or zero recall.
+	•	Sampling techniques significantly improved recall.
+	•	Random Under Sampling achieved very high recall, especially with Random Forest.
 
-Observation:
-	•	Accuracy remains above 97% in most cases.
-	•	High accuracy is misleading because the majority class dominates predictions.
+Precision
 
-⸻
+Precision shows how many of the predicted fraud cases were actually fraud.
+	•	When recall increased, precision often decreased.
+	•	This trade-off is expected in fraud detection, where catching more frauds can lead to more false alarms.
 
-🔹 Recall Heatmap
+F1-Score
 
-Recall represents the ability to detect fraudulent transactions.
+The F1-score balances precision and recall.
+	•	The best F1-scores were generally observed when sampling was used.
+	•	Some combinations still had low F1-scores due to poor recall.
 
-Key Findings:
-	•	NoSampling results in zero recall for most models.
-	•	RandomUnderSampler achieved 100% recall for Random Forest.
-	•	Sampling significantly improves fraud detection capability.
+ROC-AUC
 
-⸻
+ROC-AUC measures how well the model can distinguish between fraud and non-fraud transactions.
+	•	Random Forest consistently achieved strong ROC-AUC values.
+	•	The combination of Random Forest with Random Under Sampling or SMOTE + Tomek Links performed particularly well.
 
-🔹 Precision Heatmap
 
-Precision measures how many detected frauds are actually fraud.
+Average Recall by Sampling Method
 
-Observation:
-	•	Precision decreases when recall increases.
-	•	This trade-off is expected in fraud detection systems.
+When recall was averaged across all models:
+	•	Random Under Sampling gave the highest average recall.
+	•	Random Over Sampling also performed well.
+	•	SMOTE-based methods showed moderate improvement.
 
-⸻
+Best Sampling Method per Model (Based on Recall)
+	•	Logistic Regression → Random Over Sampling
+	•	Decision Tree → Random Over Sampling
+	•	Random Forest → Random Under Sampling
+	•	SVM → Random Over Sampling
+	•	Naive Bayes → Performed poorly across most sampling methods
 
-🔹 F1-Score Heatmap
-
-F1-score balances precision and recall.
-
-Observation:
-	•	Best F1-score observed for Decision Tree + RandomOverSampler.
-	•	Many combinations show near-zero F1 due to poor recall.
-
-⸻
-
-🔹 ROC-AUC Heatmap
-
-ROC-AUC evaluates the model’s ability to distinguish between classes.
-
-Key Insight:
-	•	RandomForest + RandomUnderSampler / SMOTETomek achieved the highest ROC-AUC.
-	•	Random Forest shows the most stable performance across sampling techniques.
-
-⸻
-
-🔹 Average Recall per Sampling Method
-
-This graph shows the effectiveness of each sampling method across all models.
-
-Conclusion:
-	•	RandomUnderSampler provides the highest average recall.
-	•	RandomOverSampler also performs well.
-	•	SMOTE-based techniques perform moderately.
-
-⸻
-
-🔹 Best Recall per Model
-
-This graph highlights the best sampling method for each model based on recall.
-
-Best Combinations:
-	•	Logistic Regression → RandomOverSampler
-	•	Decision Tree → RandomOverSampler
-	•	Random Forest → RandomUnderSampler
-	•	SVM → RandomOverSampler
-	•	Naive Bayes → Poor performance overall
-
-⸻
-
-📋 Metrics Summary Table (Highlights)
+Metrics Summary (Highlights)
 
 Model	Best Sampling	Recall	ROC-AUC
-Logistic Regression	RandomOverSampler	High	~0.71
-Decision Tree	RandomOverSampler	High	~0.83
-Random Forest	RandomUnderSampler	1.00	~0.86
-SVM	RandomOverSampler	High	~0.77
+Logistic Regression	Random Over Sampling	High	~0.71
+Decision Tree	Random Over Sampling	High	~0.83
+Random Forest	Random Under Sampling	1.00	~0.86
+SVM	Random Over Sampling	High	~0.77
 Naive Bayes	None	0.00	Low
 
-Full metrics are available in full_metrics.csv.
 
-⸻
-
-✅ Final Conclusion
-	•	Sampling techniques are critical when working with imbalanced datasets.
-	•	Accuracy alone is not reliable for fraud detection.
-	•	RandomUnderSampler achieved the highest recall on average.
-	•	RandomForest combined with RandomUnderSampler delivered the best overall performance in terms of recall and ROC-AUC.
-
+Final Conclusion
+	•	Sampling techniques are essential when working with imbalanced datasets.
+	•	Accuracy alone is not a reliable metric for fraud detection.
+	•	Random Under Sampling provided the highest recall on average.
+	•	The best overall performance was achieved using Random Forest with Random Under Sampling, which balanced high recall with strong ROC-AUC.
