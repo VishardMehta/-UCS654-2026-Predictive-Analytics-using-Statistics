@@ -25,7 +25,7 @@ Result Graph Explanation
 
 The graph shows a Kernel Density Estimate (KDE) of the transformed variable z.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5f97b27f-82d6-4373-b189-bbbacecb4946" width="684" height="384">
+  <img src="https://github.com/user-attachments/assets/1fe1e3ca-ce36-47e4-9dde-fc5b9067be93" width="684" height="384">
 </p>
 
 Observations
