@@ -61,6 +61,8 @@ Since fraud detection is a cost-sensitive problem, recall was treated as the mos
 
 Results and Analysis
 
+![Average Recall Sampling](avg_recall_sampling.png)
+
 Accuracy
 
 Accuracy was above 97% for most models, even without sampling. However, this is misleading because the dataset is dominated by legitimate transactions. A model can predict almost everything as legitimate and still achieve high accuracy.
@@ -90,7 +92,7 @@ ROC-AUC measures how well the model can distinguish between fraud and non-fraud 
 	•	Random Forest consistently achieved strong ROC-AUC values.
 	•	The combination of Random Forest with Random Under Sampling or SMOTE + Tomek Links performed particularly well.
 
-
+![ROC AUC Heatmap](roc_auc_heatmap.png)
 Average Recall by Sampling Method
 
 When recall was averaged across all models:
