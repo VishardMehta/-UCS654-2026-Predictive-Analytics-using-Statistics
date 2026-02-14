@@ -41,7 +41,7 @@ Install ffmpeg:
 ## Installation (local development)
 
 1. Clone the repo and change into it:
-   git clone https://github.com/HiteshhYadav/Mashup_Assign7.git
+   git clone 
    cd Mashup_Assign7
 
 2. Create a virtual environment and activate it:
