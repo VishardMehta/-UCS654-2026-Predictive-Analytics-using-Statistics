@@ -92,7 +92,7 @@ In Part-II, the TOPSIS implementation is packaged as a Python module and uploade
 - **Package Name:** Topsis-Vishard-102317240
 - **Version:** 1.0.1
 - **License:** MIT
-- #### PyPI Link: https://pypi.org/project/Topsis-Vishard-102317240/1.0.1
+
 
 ### Package Installation
 
@@ -120,11 +120,9 @@ Part-III includes a Flask-based web service for TOPSIS. The user uploads the dat
 - Enter valid email ID
 - Output file is generated and emailed to the user
 
-### User Interface 
-<img src="assets/interface.png">
 
 ### Email Output
-<img src="assets/email.png">
+
 
 #### Live Link: https://assign1-topsis.onrender.com/
 **Live Deployment Status:** While the application is compatible with platforms like Render or Railway, outbound SMTP (Email) traffic on ports 587 and 465 is currently blocked by these providers' free-tier firewalls to prevent spam. Consequently, the email-sending feature is best demonstrated in a local environment where network ports are unrestricted.
